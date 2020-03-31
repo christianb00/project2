@@ -47,15 +47,20 @@ void disp(matrix* arr){
 
 void matAdd(matrix *arr1, matrix *arr2){
   matrix *sum = new matrix;
-  for (int i = 0; i<arr1->rows;i++){
-    for (int j = 0; j<arr1->cols;j++){
-      *(sum->ptr+i*arr1->cols+j) = *(arr1->ptr+i*arr1->cols+j) + *(arr2->ptr+i*arr2->cols+j);
+  sum->rows = arr1->rows;
+  sum->cols = arr2->cols;
+  sum->ptr = new int[sum->rows * sum->cols];
+  for (int i = 0; i<sum->rows;i++){
+    for (int j = 0; j<sum->cols;j++){
+      *((sum->ptr)+i*(arr1->cols)+j) = *((arr1->ptr)+i*(arr1->cols)+j) +
+      *((arr2->ptr)+i*(arr1->cols)+j);
     }
   }
   delete[] arr1;
   delete[] arr2;
   cout<<"\nDisplaying Sum Array:\n";
   disp(sum);
+  delete[] sum->ptr;
   delete[] sum;
   cout<<"\nOperation complete. Returning to menu...\n";
   main();
