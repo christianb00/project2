@@ -169,6 +169,8 @@ void matSize(matrix *arr){
   disp(arr);
   delete[] arr->ptr;
   delete[] arr;
+  cout<<"\nResize complete. Returning to menu...";
+  main();
 }
 
 void matShape(matrix *arr){
