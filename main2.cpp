@@ -130,14 +130,23 @@ main();
 }
 
 void matDet(matrix *arr){
-  int det;
+int det = 0;
   // check if array is 2x2 to directly apply identity. det(A) = [0]*[3] - [1]*[2]
   if(arr->rows == 2 ){
-    det = *(arr->ptr) * *(arr->ptr + 3) -
+    det += *(arr->ptr) * *(arr->ptr + 3) -
     *(arr->ptr + 1) * *(arr-> ptr + 2);
-
-    cout<<det;
+    cout<<'\n'<<det;
   }
+  if(arr->rows == 3 ){
+    det = *(arr->ptr) * (*(arr->ptr+6) * *(arr->ptr+8) - *(arr->ptr+5) * *(arr->ptr+7))
+    - *(arr->ptr+1) * (*(arr->ptr+2) * *(arr->ptr+8) - *(arr->ptr+5) * *(arr->ptr+6))
+    + *(arr->ptr+2) * (*(arr->ptr+2) * *(arr->ptr+7) - *(arr->ptr+4) * *(arr->ptr+6));
+    cout<<'\n'<<det;
+  }
+  delete[] arr->ptr;
+  delete[] arr;
+  cout<<"\nOperation complete. Returning to menu...\n";
+  main();
 }
 
 
